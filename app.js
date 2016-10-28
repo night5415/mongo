@@ -1,5 +1,8 @@
 var MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
+
+var fs = require('fs');
+
 var DataBase;
 // Connection URL
 var url = 'mongodb://localhost:27017/myproject';
@@ -60,6 +63,14 @@ function insertValues() {
 }
 
 function insertCombined(food, values) {
-    debugger;
+    var newVal = {
+        name: food.name,
+        protein: values[0].value,
+        fat: values[1].value,
+        vita_C: values[2].value,
+        calories: values[2].value
+    };
+
+    fs.appendFileSync(__dirname + '/test.json', JSON.stringify(newVal));
 }
 
